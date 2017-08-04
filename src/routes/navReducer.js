@@ -2,7 +2,7 @@ import { combineReducers } from 'redux'
 import { RoutesApp } from './routes'
 import { NavigationActions } from 'react-navigation'
 
-const firstAction = RoutesApp.router.getActionForPathAndParams('Home')
+const firstAction = RoutesApp.router.getActionForPathAndParams('Splash')
 
 const INITIAL_STATE = RoutesApp.router.getStateForAction(
 	firstAction
@@ -15,12 +15,12 @@ const login = NavigationActions.reset({
 	]
 })
 
-// const logout = NavigationActions.reset({
-// 	index: 0,
-// 	actions: [
-// 		NavigationActions.navigate({routeName: 'SignIn'})
-// 	]
-// })
+const logout = NavigationActions.reset({
+	index: 0,
+	actions: [
+		NavigationActions.navigate({routeName: 'SignIn'})
+	]
+})
 
 export default(state = INITIAL_STATE,action) => {
 	let nextState
