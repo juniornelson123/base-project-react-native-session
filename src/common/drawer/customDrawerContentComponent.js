@@ -19,7 +19,7 @@ const home = NavigationActions.reset({
 const map = NavigationActions.reset({
 	index: 0,
 	actions: [
-		NavigationActions.navigate({routeName: 'Map'})
+		NavigationActions.navigate({routeName: 'NewParking'})
 	]
 })
 
@@ -34,6 +34,7 @@ class customDrawerContentComponent extends React.Component{
 		  	</View>
 		  	<View style={styles.drawerBody}>
 			    <TouchableOpacity style={styles.buttonExit} onPress={() => this.props.navigation.dispatch(home)}><Text style={styles.textButtonExit}>Home</Text></TouchableOpacity>
+			    <TouchableOpacity style={styles.buttonExit} onPress={() => this.props.navigation.dispatch(map)}><Text style={styles.textButtonExit}>Novo Estacionamento</Text></TouchableOpacity>
 			    <TouchableOpacity style={styles.buttonExit} onPress={() => this.props.logout()}><Text style={styles.textButtonExit}>Sair</Text></TouchableOpacity>
 				</View>
 		  </View>

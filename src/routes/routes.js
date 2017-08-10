@@ -7,6 +7,7 @@ import Home from '../home/home'
 import SignIn from '../signIn/signIn'
 import SignUp from '../signUp/signUp'
 import Splash from '../splash/splash'
+import NewParking from '../parking/newParking/newParking'
 import customDrawerContentComponent from '../common/drawer/customDrawerContentComponent'
 
 
@@ -14,7 +15,8 @@ export const RoutesApp = StackNavigator({
 	Home: {screen: Home},
 	SignIn: {screen: SignIn},
 	Splash: {screen: Splash},
-	SignUp: {screen: SignUp}
+	SignUp: {screen: SignUp},
+	NewParking: {screen: NewParking}
 }, {
 	navigationOptions: {
 		headerTitleStyle: { color: Consts.primary_text_color},
