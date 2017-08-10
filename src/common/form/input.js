@@ -15,6 +15,7 @@ class Input extends Component{
 				<Text>{this.props.label}</Text>
 				<TextInput 
 					{...this.props.inputProps}
+					secureTextEntry = {this.props.secureTextEntry}
 					onChangeText={this.props.input.onChange}
 		      onBlur={this.props.input.onBlur}
 		      onFocus={this.props.input.onFocus}

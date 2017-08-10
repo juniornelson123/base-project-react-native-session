@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux'
-import { RoutesApp } from './routes'
+import { RoutesApp, DrawerApp } from './routes'
 import { NavigationActions } from 'react-navigation'
 
-const firstAction = RoutesApp.router.getActionForPathAndParams('Splash')
+const firstAction = DrawerApp.router.getActionForPathAndParams('Splash')
 
-const INITIAL_STATE = RoutesApp.router.getStateForAction(
+const INITIAL_STATE = DrawerApp.router.getStateForAction(
 	firstAction
 )
 
@@ -26,19 +26,25 @@ export default(state = INITIAL_STATE,action) => {
 	let nextState
 	switch(action.type){
 		case 'LOGIN':
-			nextState = RoutesApp.router.getStateForAction(
+			nextState = DrawerApp.router.getStateForAction(
 				login,
 				state
 			)
 			break
+		case 'REGISTER':
+			nextState = DrawerApp.router.getStateForAction(
+				login,
+				state
+			)
+			break	
 		case 'LOGOUT':
-			nextState = RoutesApp.router.getStateForAction(
+			nextState = DrawerApp.router.getStateForAction(
 				logout,
 				state
 			)
 			break
 		default:
-			nextState = RoutesApp.router.getStateForAction(action, state)
+			nextState = DrawerApp.router.getStateForAction(action, state)
 			break
 	}
 

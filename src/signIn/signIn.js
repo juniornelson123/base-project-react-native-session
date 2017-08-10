@@ -2,10 +2,13 @@ import React, { Component } from 'react'
 import { View, Text, TouchableOpacity } from 'react-native'
 import { reduxForm, Field } from 'redux-form'
 import Form from './signInForm'
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { login } from './signInActions'
 
 class SignIn extends Component{
 	static navigationOptions = {
-		title: 'Principal'
+		title: 'Estaciona Facil'
 	}
 
 	open(values){
@@ -15,10 +18,12 @@ class SignIn extends Component{
 	render(){
 		return(
 			<View>
-				<Form	onSubmit={this.open}/>
+				<Form	onSubmit={this.props.login} navigation={this.props.navigation} />
 			</View>
 		)
 	}
 }
 
-export default SignIn
+const mapDispatchToProps = dispatch => bindActionCreators({login}, dispatch)
+
+export default connect(null, mapDispatchToProps)(SignIn)
