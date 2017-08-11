@@ -43,6 +43,12 @@ export default(state = INITIAL_STATE,action) => {
 				state
 			)
 			break
+		case 'SAVE_PARKING':
+			nextState = DrawerApp.router.getStateForAction(
+				login,
+				state
+			)
+			break
 		default:
 			nextState = DrawerApp.router.getStateForAction(action, state)
 			break

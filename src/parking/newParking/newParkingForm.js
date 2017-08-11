@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { View, ScrollView ,Text, TouchableOpacity, StyleSheet, Picker, Button } from 'react-native'
 import { reduxForm, Field } from 'redux-form'
 import Input from '../../common/form/input'
+import InputHidden from '../../common/form/inputHidden'
+import PickerInput from '../../common/form/picker'
 import { NavigationActions } from 'react-navigation'
 
 const newParkingAction = NavigationActions.navigate({
@@ -18,29 +20,43 @@ class NewParkingForm extends Component{
 	constructor(props) {
 		super(props);
 		
-		this.state = {language: null}
+		this.state = {state: null, city: null}
 	}
+
+	
+	valueChange(value){
+		this.setState({...this.state, state: value})
+		this.props.getCities(value)
+	}	
+
 	render(){
+		const getStates = this.props.states.map((state) =>
+	  	 <Picker.Item label={state.name} value={state.id} key={state.name.toString()} />          
+	  );
+		const getCities = this.props.cities.map((city) =>
+	  	 <Picker.Item label={city.name} value={city.id} key={city.name.toString()} />          
+	  );
+
 		return(
 			<ScrollView style={styles.containerForm}>
 				<View style={styles.containerForm}>
 					<View>
 						<Field 
-						name="name"
+						name="parking[name]"
 						label="Nome"
 						component={Input}/>
 					</View>
 					
 					<View>
 						<Field 
-							name="description"
+							name="parking[description]"
 							label="Descrição"
 							component={Input}/>
 					</View>
 
 					<View>
 						<Field 
-							name="cep"
+							name="parking[address_attributes][cep]"
 							label="Cep"
 							component={Input}/>
 					</View>
@@ -48,7 +64,7 @@ class NewParkingForm extends Component{
 
 					<View>
 						<Field 
-							name="district"
+							name="parking[address_attributes][district]"
 							label="Bairro"
 							component={Input}/>
 					</View>
@@ -56,32 +72,40 @@ class NewParkingForm extends Component{
 
 					<View>
 						<Field 
-							name="address"
+							name="parking[address_attributes][address]"
 							label="Endereço"
 							component={Input}/>
 					</View>
 
 					<View>
 						<Field 
-							name="number"
+							name="parking[address_attributes][number]"
 							label="Numero"
 							component={Input}/>
 					</View>
 
 					<View>
 						<Field 
-							name="complement"
+							name="parking[address_attributes][complement]"
 							label="Complemento"
 							component={Input}/>
 					</View>
+
 					<View>
 						<Picker
-						  selectedValue={this.state.language}
-						  onValueChange={(itemValue, itemIndex) => this.setState({language: itemValue})}>
-						  <Picker.Item label="Java" value="java" />
-						  <Picker.Item label="JavaScript" value="js" />
-						</Picker>
+						  selectedValue={this.state.state}
+						  onValueChange={(itemValue, itemIndex) => this.valueChange(itemValue)}>
+							{ getStates }
+						 </Picker>
 					</View>
+						
+					<View>
+						<Field 
+							name="parking[address_attributes][city_id]"
+							component={PickerInput}>
+						 	{getCities}
+						</Field>
+					</View>	
 					
 
 

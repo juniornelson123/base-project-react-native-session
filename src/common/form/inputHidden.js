@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, TextInput } from 'react-native'
 
-class Input extends Component{
+class InputHidden extends Component{
 	constructor(props) {
 		super(props);
 		
@@ -12,15 +12,13 @@ class Input extends Component{
 
 		return(
 			<View>
-				<Text>{this.props.label}</Text>
 				<TextInput 
 					{...this.props.inputProps}
-					style={this.props.style}
 					secureTextEntry = {this.props.secureTextEntry}
 					onChangeText={this.props.input.onChange}
 		      onBlur={this.props.input.onBlur}
 		      onFocus={this.props.input.onFocus}
-		      value={this.props.input.value}
+		      value={this.props.value}
 					/>
 			</View>
 		)
@@ -29,4 +27,4 @@ class Input extends Component{
 		
 }
 
-export default Input
+export default InputHidden
