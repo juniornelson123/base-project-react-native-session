@@ -13,7 +13,6 @@ import customDrawerContentComponent from '../common/drawer/customDrawerContentCo
 
 export const RoutesApp = StackNavigator({
 	Home: {screen: Home},
-	SignIn: {screen: SignIn},
 	Splash: {screen: Splash},
 	SignUp: {screen: SignUp},
 	NewParking: {screen: NewParking}
@@ -27,8 +26,7 @@ export const RoutesApp = StackNavigator({
 })
 
 export const DrawerApp = DrawerNavigator({
-	Home: {screen: RoutesApp},
-	Map: {screen: Map}
+	Home: {screen: RoutesApp}
 
 }, {
   contentComponent: customDrawerContentComponent
